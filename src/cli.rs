@@ -1,0 +1,35 @@
+use clap::{Parser, Subcommand};
+
+#[derive(Parser)]
+#[command(
+    name = "Rustsys",
+    version = "0.1.0",
+    about = "System monitoring CLI tool"
+)]
+pub struct Cli {
+    #[command(subcommand)]
+    pub command: Commands,
+}
+
+#[derive(Subcommand)]
+pub enum Commands {
+    /// Show cpu percentage use.
+    Cpu{
+        /// Show CPU frequency in GHz
+        #[arg(long)]
+        ghz: bool,
+
+        /// Show all CPU info
+        #[arg(long)]
+        all: bool,
+    },
+
+    /// Show memory percentage use.
+    Mem,
+
+    /// Show temperature of system.
+    Temp,
+
+    /// Show devices connected in the system bus.
+    Devices,
+}
