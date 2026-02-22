@@ -1,18 +1,19 @@
 use clap::Parser;
 use clap::error::ErrorKind;
+use cli::{Cli, Commands};
 
 mod cli;
 mod metrics;
 mod utils;
 
-use cli::{Cli, Commands};
 
 fn main() {
     let cli = Cli::try_parse();
 
     match cli {
         Ok(cli) => match cli.command {
-            Commands::Cpu {ghz,all}=> {
+
+            Commands::Cpu {ghz,all} => {
                 metrics::cpu::cpu(ghz, all);
             },
             

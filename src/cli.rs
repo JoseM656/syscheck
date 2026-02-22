@@ -2,10 +2,12 @@ use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
 #[command(
-    name = "Rustsys",
+    name = "syscheck",
     version = "0.1.0",
-    about = "System monitoring CLI tool"
+    about = "Rust CLI tool for get system data and other utilities",
+    after_help = "Use 'syscheck <command> --help' for more information about a command."
 )]
+
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
