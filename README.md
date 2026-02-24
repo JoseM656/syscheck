@@ -1,16 +1,14 @@
 # Welcome
 
----
 
 syscheck is a lightweight binary rust for linux than give you varius tool, like monitor tools and other utilities like copy paths and files. 
 The project uses clap to join the varius tools.
 
-[[screenshots/screenshot_1.png]]
+![screenshot](screenshots/screenshot_1.png)
 
 
 ## Tools
 
----
 
 The number of tools increases over time; they are mainly divided into 
 monitoring tools and various utilities.
@@ -24,20 +22,18 @@ syscheck <command> --FLAG
 
 ### Cpu
 
----
 
 This tool just prints the percentage of use of the processor, admits "--all" flag and "--ghz" for only frequency.
 
-[[screenshots/screenshot_2.png]]
+![syscheck running](screenshots/screenshot_2.png)
 
 
 ### mem
 
----
 
 This tool displays the main system memories: RAM, swap, and cache. It supports the "--all", "--cache", and "--swap" flags.
 
-[[screenshots/screenshot_3.png]]
+![syscheck running](screenshots/screenshot_3.png)
 
 
 
