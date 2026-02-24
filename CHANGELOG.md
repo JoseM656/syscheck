@@ -9,3 +9,4 @@
 ### 0.2.0
 
 - Memory funcion was added, with 3 flags.
+- Added frist README.

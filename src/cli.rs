@@ -3,7 +3,7 @@ use clap::{Parser, Subcommand};
 #[derive(Parser)]
 #[command(
     name = "syscheck",
-    version = "0.1.0",
+    version = "0.2.0",
     about = "Rust CLI tool for get system data and other utilities",
     after_help = "Use 'syscheck <command> --help' for more information about a command."
 )]

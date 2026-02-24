@@ -20,20 +20,31 @@ syscheck <command> --FLAG
 ```
 
 
-### Cpu
+### cpu
 
 
 This tool just prints the percentage of use of the processor, admits "--all" flag and "--ghz" for only frequency.
 
-![syscheck running](screenshots/screenshot_2.png)
+```
+[syscheck - CPU - all]:
+- Usage: 4.03%
+- Freq: 0.52 GHz
+```
 
 
 ### mem
 
 
-This tool displays the main system memories: RAM, swap, and cache. It supports the "--all", "--cache", and "--swap" flags.
+This tool displays the main system memories: RAM, swap, and cache. It supports the "--all", "--cache", 
+and "--swap" flags.
 
-![syscheck running](screenshots/screenshot_3.png)
+```
+[syscheck - mem - all]:
+- RAM used: 4476 MB (4 GB)
+- Total RAM: 7616 MB (7 GB)
+- SWAP used: 228 MB (0 GB)
+- Cached: 2924 MB (2 GB)
+```
 
 
 
