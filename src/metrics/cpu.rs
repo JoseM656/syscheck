@@ -4,8 +4,8 @@ pub fn cpu(ghz: bool, all: bool) {
 
     if all {
         println!("[syscheck - CPU - all]:");
-        println!("Usage: {:.2}%", cpu_usage());
-        println!("Freq: {:.2} GHz", cpu_freq_ghz());
+        println!("- Usage: {:.2}%", cpu_usage());
+        println!("- Freq: {:.2} GHz", cpu_freq_ghz());
         return;
     }
 
