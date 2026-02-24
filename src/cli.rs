@@ -16,7 +16,7 @@ pub struct Cli {
 #[derive(Subcommand)]
 pub enum Commands {
     /// Show cpu percentage use.
-    Cpu{
+    Cpu {
         /// Show CPU frequency in GHz
         #[arg(long)]
         ghz: bool,
@@ -27,7 +27,20 @@ pub enum Commands {
     },
 
     /// Show memory percentage use.
-    Mem,
+    Mem {
+
+        /// Show cache memory
+        #[arg(long)]
+        cache: bool,
+
+        /// Show swap memory
+        #[arg(long)]
+        swap: bool,
+
+        /// Show all relevant memories
+        #[arg(long)]
+        all: bool,
+    },
 
     /// Show temperature of system.
     Temp,

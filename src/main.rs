@@ -17,7 +17,9 @@ fn main() {
                 metrics::cpu::cpu(ghz, all);
             },
             
-            Commands::Mem => metrics::mem::mem(),
+            Commands::Mem {cache, swap, all} => {
+                metrics::mem::mem(cache, swap, all)},
+
             Commands::Temp => metrics::temp::temp(),
             Commands::Devices => utils::devices::devices(),
         },
