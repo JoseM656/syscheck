@@ -30,9 +30,9 @@ fn main() {
                 Commands::Devices => utils::devices::devices(),
 
 
-                Commands::Convert { value, to_bin, to_hex, to_dec } => {
+                Commands::Convert { value, from, to} => {
                     
-                    utils::convert::convert(value, to_bin, to_hex, to_dec);
+                    utils::convert::convert(value, from, to);
                 }
 
         },

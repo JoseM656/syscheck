@@ -4,10 +4,6 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
 
     let content = fs::read_to_string("/proc/meminfo").unwrap();
 
-    fn format_mem(label: &str, kb: u64) {
-        println!("{}: {} MB ({} GB)", label, kb / 1024, kb / 1_048_576);
-    }
-
     if all {
 
         let mem_total     = parse_meminfo_value(&content, "MemTotal:");
@@ -57,6 +53,10 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
 
 }
 
+
+fn format_mem(label: &str, kb: u64) {
+    println!("{}: {} MB ({} GB)", label, kb / 1024, kb / 1_048_576);
+}
 
 // Function to facilitate memory parsing
 fn parse_meminfo_value(content: &str, key: &str) -> u64 {

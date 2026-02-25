@@ -10,5 +10,10 @@
 
 - Memory funcion was added, with 3 flags.
 - Added frist README.
-- Added the struct for convert.
+- Added the struct for "convert".
 - Minor fixes in how prints information
+
+
+### 0.3.0
+
+- Frist utility added, "convert.rs" allow to convert between binary, octal hexadecimal and decimal

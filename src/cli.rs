@@ -3,7 +3,7 @@ use clap::{Parser, Subcommand};
 #[derive(Parser)]
 #[command(
     name = "syscheck",
-    version = "0.2.0",
+    version = "0.3.0",
     about = "Rust CLI tool for get system data and other utilities",
     after_help = "Use 'syscheck <command> --help' for more information about a command."
 )]
@@ -48,21 +48,15 @@ pub enum Commands {
     /// Show devices connected in the system bus.
     Devices,
 
-    /// Convert a decimal, binary o hexadecimal number in any of the 3 mentioned.
+    /// Convert numbers between binary, hexadecimal, octal or decimal.
     Convert {
-
+    
         value: String,
 
-        /// Convert into a binary number,
         #[arg(long)]
-        to_bin: bool,
+        from: String,  // "dec", "bin", "hex"
 
-        /// Convert into a hexadecimal number.
         #[arg(long)]
-        to_hex: bool,
-
-        /// Convert into a decimal number.
-        #[arg(long)]
-        to_dec: bool,
-    },
+        to: String,    // "dec", "bin", "hex"
+    }
 }
