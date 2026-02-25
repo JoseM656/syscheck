@@ -17,11 +17,11 @@ pub struct Cli {
 pub enum Commands {
     /// Show cpu percentage use.
     Cpu {
-        /// Show CPU frequency in GHz
+        /// Show CPU frequency in GHz.
         #[arg(long)]
         ghz: bool,
 
-        /// Show all CPU info
+        /// Show all CPU info.
         #[arg(long)]
         all: bool,
     },
@@ -29,15 +29,15 @@ pub enum Commands {
     /// Show memory percentage use.
     Mem {
 
-        /// Show cache memory
+        /// Show cache memory.
         #[arg(long)]
         cache: bool,
 
-        /// Show swap memory
+        /// Show swap memory.
         #[arg(long)]
         swap: bool,
 
-        /// Show all relevant memories
+        /// Show all relevant memories.
         #[arg(long)]
         all: bool,
     },
@@ -47,4 +47,22 @@ pub enum Commands {
 
     /// Show devices connected in the system bus.
     Devices,
+
+    /// Convert a decimal, binary o hexadecimal number in any of the 3 mentioned.
+    Convert {
+
+        value: String,
+
+        /// Convert into a binary number,
+        #[arg(long)]
+        to_bin: bool,
+
+        /// Convert into a hexadecimal number.
+        #[arg(long)]
+        to_hex: bool,
+
+        /// Convert into a decimal number.
+        #[arg(long)]
+        to_dec: bool,
+    },
 }

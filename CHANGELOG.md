@@ -10,3 +10,4 @@
 
 - Memory funcion was added, with 3 flags.
 - Added frist README.
+- Added the struct for convert.
