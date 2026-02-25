@@ -28,12 +28,11 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
     
     if swap {
             
-        
         let swap_total    = parse_meminfo_value(&content, "SwapTotal:");
         let swap_free     = parse_meminfo_value(&content, "SwapFree:");
 
         println!("SWAP");
-        format_mem("Usage      ", swap_total - swap_free);
+        format_mem("Usage  ", swap_total - swap_free);
         
         return;
     }
@@ -44,9 +43,7 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
         let cached = parse_meminfo_value(&content, "Cached:");
 
         println!("CACHE");
-        format_mem("Usage      ",     cached);
-
-        
+        format_mem("Usage  ",cached);
 
     } else {
 
