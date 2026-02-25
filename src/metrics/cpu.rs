@@ -3,16 +3,22 @@ use std::{fs, thread, time::Duration};
 pub fn cpu(ghz: bool, all: bool) {
 
     if all {
-        println!("[syscheck - CPU - all]:");
-        println!("- Usage: {:.2}%", cpu_usage());
-        println!("- Freq: {:.2} GHz", cpu_freq_ghz());
+        println!("CPU");
+        println!("Usage: {:.2}%", cpu_usage());
+        println!("Frequency: {:.2} GHz", cpu_freq_ghz());
         return;
     }
 
     if ghz {
-        println!("[syscheck - CPU - GHz]: {:.2} GHz", cpu_freq_ghz());
+
+        println!("CPU");
+        println!("Frequency: {:.2} GHz", cpu_freq_ghz());
+
     } else {
-        println!("[syscheck - CPU]: {:.2}%", cpu_usage());
+
+        println!("CPU");
+        println!("Usage: {:.2}%", cpu_usage());
+
     }
 }
 

@@ -16,12 +16,11 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
         let swap_free     = parse_meminfo_value(&content, "SwapFree:");
         let cached        = parse_meminfo_value(&content, "Cached:");
 
-        println!("[syscheck - mem - all]:");
-
-        format_mem("- RAM used",  mem_total - mem_available);
-        format_mem("- Total RAM",  mem_total);
-        format_mem("- SWAP used", swap_total - swap_free);
-        format_mem("- Cached",     cached);
+        println!("MEMORY");
+        format_mem("RAM Usage: ",  mem_total - mem_available);
+        format_mem("Total RAM: ",  mem_total);
+        format_mem("SWAP Usage: ", swap_total - swap_free);
+        format_mem("Cache: ",     cached);
 
         return;
     }
@@ -32,8 +31,8 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
         let swap_total    = parse_meminfo_value(&content, "SwapTotal:");
         let swap_free     = parse_meminfo_value(&content, "SwapFree:");
 
-        println!("[syscheck - mem - swap]");
-        format_mem("- SWAP used", swap_total - swap_free);
+        println!("SWAP");
+        format_mem("Usage: ", swap_total - swap_free);
         
         return;
     }
@@ -42,8 +41,8 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
 
         let cached = parse_meminfo_value(&content, "Cached:");
 
-        println!("[syscheck - mem - cache]");
-        format_mem("- Cached",     cached);
+        println!("CACHE");
+        format_mem("Usage: ",     cached);
 
         
 
@@ -52,9 +51,9 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
         let mem_total     = parse_meminfo_value(&content, "MemTotal:");
         let mem_available = parse_meminfo_value(&content, "MemAvailable:");
 
-        println!("[syscheck - mem]");
-        format_mem("- RAM used",  mem_total - mem_available);
-        format_mem("- Total RAM",  mem_total);
+        println!("RAM");
+        format_mem("Usage: ",  mem_total - mem_available);
+        format_mem("Total: ",  mem_total);
     }
 
 }
