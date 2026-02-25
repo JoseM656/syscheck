@@ -4,20 +4,20 @@ pub fn cpu(ghz: bool, all: bool) {
 
     if all {
         println!("CPU");
-        println!("Usage: {:.2}%", cpu_usage());
-        println!("Frequency: {:.2} GHz", cpu_freq_ghz());
+        println!("Usage     : {:.2}%", cpu_usage());
+        println!("Frequency : {:.2} GHz", cpu_freq_ghz());
         return;
     }
 
     if ghz {
 
         println!("CPU");
-        println!("Frequency: {:.2} GHz", cpu_freq_ghz());
+        println!("Frequency : {:.2} GHz", cpu_freq_ghz());
 
     } else {
 
         println!("CPU");
-        println!("Usage: {:.2}%", cpu_usage());
+        println!("Usage : {:.2}%", cpu_usage());
 
     }
 }
