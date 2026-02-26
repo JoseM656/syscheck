@@ -13,10 +13,10 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
         let cached        = parse_meminfo_value(&content, "Cached:");
 
         println!("MEMORY");
-        format_mem("RAM Usage  ",  mem_total - mem_available);
-        format_mem("Total RAM  ",  mem_total);
-        format_mem("SWAP Usage ", swap_total - swap_free);
-        format_mem("Cache      ",     cached);
+        format_mem("RAM Usage:  ",  mem_total - mem_available);
+        format_mem("Total RAM:  ",  mem_total);
+        format_mem("SWAP Usage: ", swap_total - swap_free);
+        format_mem("Cache:      ",     cached);
 
         return;
     }
@@ -28,7 +28,7 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
         let swap_free     = parse_meminfo_value(&content, "SwapFree:");
 
         println!("SWAP");
-        format_mem("Usage  ", swap_total - swap_free);
+        format_mem("Usage:  ", swap_total - swap_free);
         
         return;
     }
@@ -39,7 +39,7 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
         let cached = parse_meminfo_value(&content, "Cached:");
 
         println!("CACHE");
-        format_mem("Usage  ",cached);
+        format_mem("Usage:  ",cached);
 
     } else {
 
@@ -47,15 +47,15 @@ pub fn mem(cache: bool, swap: bool, all: bool) {
         let mem_available = parse_meminfo_value(&content, "MemAvailable:");
 
         println!("RAM");
-        format_mem("Usage     ",  mem_total - mem_available);
-        format_mem("Total     ",  mem_total);
+        format_mem("Usage:  ",  mem_total - mem_available);
+        format_mem("Total:  ",  mem_total);
     }
 
 }
 
 
 fn format_mem(label: &str, kb: u64) {
-    println!("{}: {} MB ({} GB)", label, kb / 1024, kb / 1_048_576);
+    println!("{} {} MB ({} GB)", label, kb / 1024, kb / 1_048_576);
 }
 
 // Function to facilitate memory parsing

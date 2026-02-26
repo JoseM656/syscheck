@@ -3,21 +3,26 @@ use std::{fs, thread, time::Duration};
 pub fn cpu(ghz: bool, all: bool) {
 
     if all {
+
+        let (avg1, avg5, avg15) = cpu_load_avg();
+
         println!("CPU");
-        println!("Usage     : {:.2}%", cpu_usage());
-        println!("Frequency : {:.2} GHz", cpu_freq_ghz());
+        println!("Usage:      {:.2}%", cpu_usage());
+        println!("Frequency:  {:.2} GHz", cpu_freq_ghz());
+        println!("Load avg:   {} (1m) {} (5m) {} (15m)", avg1, avg5, avg15);
         return;
     }
 
     if ghz {
 
         println!("CPU");
-        println!("Frequency : {:.2} GHz", cpu_freq_ghz());
+        println!("Frequency:  {:.2} GHz", cpu_freq_ghz());
 
     } else {
 
         println!("CPU");
-        println!("Usage : {:.2}%", cpu_usage());
+        println!("Usage:  {:.2}%", cpu_usage());
+        println!("Frequency:  {:.2} GHz", cpu_freq_ghz());
 
     }
 }
@@ -34,7 +39,7 @@ fn read_cpu_times() -> Vec<u64> {
 }
 
 /// CPU usage percentage
-pub fn cpu_usage() -> f64 {
+fn cpu_usage() -> f64 {
     let t1 = read_cpu_times();
     thread::sleep(Duration::from_millis(500));
     let t2 = read_cpu_times();
@@ -53,7 +58,7 @@ pub fn cpu_usage() -> f64 {
 
 
 /// Processor frequency
-pub fn cpu_freq_ghz() -> f64 {
+fn cpu_freq_ghz() -> f64 {
     let freq = fs::read_to_string(
         "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq"
     )
@@ -62,4 +67,16 @@ pub fn cpu_freq_ghz() -> f64 {
     let khz: f64 = freq.trim().parse().unwrap();
 
     khz / 1_000_000.0
+}
+
+fn cpu_load_avg() -> (f64, f64, f64) {
+
+    let content = fs::read_to_string("/proc/loadavg").unwrap();
+    let mut values = content.split_whitespace();
+
+    let avg1  = values.next().unwrap().parse::<f64>().unwrap();
+    let avg5  = values.next().unwrap().parse::<f64>().unwrap();
+    let avg15 = values.next().unwrap().parse::<f64>().unwrap();
+
+    (avg1, avg5, avg15)
 }
