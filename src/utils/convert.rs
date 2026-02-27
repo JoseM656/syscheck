@@ -1,27 +1,42 @@
 pub fn convert(value: String, from: String, to: String) {
 
-    
-    let number: u64 = match from.as_str() {
+    let clean_value = value
+        .trim_start_matches("0x")
+        .trim_start_matches("0X")
+        .trim_start_matches("0o")
+        .trim_start_matches("0O")
+        .trim_start_matches("0b")
+        .trim_start_matches("0B");
 
-        "dec" => u64::from_str_radix(&value, 10).unwrap(),
-        "bin" => u64::from_str_radix(&value, 2).unwrap(),
-        "hex" => u64::from_str_radix(&value, 16).unwrap(),
-        "oct" => u64::from_str_radix(&value, 8).unwrap(),
-
-        _ => panic!("base not supported")
+    let number: u64 = match parse_value(clean_value, &from) {
+        Ok(n) => n,
+        Err(e) => {
+            println!("Error: {}", e);
+            return;
+        }
     };
 
-
     println!("{} -> {}", &from, &to);
-    match to.as_str() {
 
+    match to.as_str() {
         "dec" => println!("{}", number),
         "bin" => println!("{:b}", number),
         "hex" => println!("{:x}", number),
         "oct" => println!("{:o}", number),
+        _ => println!("Error: base '{}' not soported", to),
+    };
+}
 
-        _ => panic!("base not supported")
+fn parse_value(value: &str, from: &str) -> Result<u64, String> {
+
+    let base = match from {
+        "dec" => 10,
+        "bin" => 2,
+        "hex" => 16,
+        "oct" => 8,
+        _ => return Err(format!("base '{}' not soported", from)),
     };
 
-
+    u64::from_str_radix(value, base)
+        .map_err(|_| format!("'{}' no es un valor válido en base {}", value, from))
 }
