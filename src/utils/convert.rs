@@ -38,5 +38,5 @@ fn parse_value(value: &str, from: &str) -> Result<u64, String> {
     };
 
     u64::from_str_radix(value, base)
-        .map_err(|_| format!("'{}' no es un valor válido en base {}", value, from))
+        .map_err(|_| format!("'{}' It is not a valid value based on {}", value, from))
 }
