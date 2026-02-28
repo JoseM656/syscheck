@@ -21,10 +21,14 @@ fn main() {
             
 
                 Commands::Mem {cache, swap, all} => {
+                    
                     metrics::mem::mem(cache, swap, all)
                 },
 
-                Commands::Temp => metrics::temp::temp(),
+                Commands::Temp {all} => {
+                
+                    metrics::temp::temp(all)
+                },
 
 
                 Commands::Devices => utils::devices::devices(),
@@ -33,7 +37,9 @@ fn main() {
                 Commands::Convert { value, from, to} => {
                     
                     utils::convert::convert(value, from, to);
-                }
+                },
+
+                Commands::Info =>utils::info::info(),
 
         },
 

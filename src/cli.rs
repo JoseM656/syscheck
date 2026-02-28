@@ -42,8 +42,14 @@ pub enum Commands {
         all: bool,
     },
 
-    /// Show temperature of system.
-    Temp,
+    /// Show temperature of system. For now are cpu sensors, after time will be gpu also. 
+    Temp{
+
+        /// Shows ALL sensors.
+        #[arg(long)]
+        all:bool,
+
+    },
 
     /// Show devices connected in the system bus.
     Devices,
@@ -53,10 +59,15 @@ pub enum Commands {
     
         value: String,
 
+        /// The current number system.
         #[arg(long)]
-        from: String,  // "dec", "bin", "hex"
+        from: String,  
 
+        /// The expected number system.
         #[arg(long)]
-        to: String,    // "dec", "bin", "hex"
-    }
+        to: String,    
+    },
+
+    /// Prints into terminal information about the system.
+    Info
 }
