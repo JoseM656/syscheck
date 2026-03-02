@@ -1,9 +1,7 @@
 use std::{fs, thread, time::Duration};
 
 pub fn cpu(ghz: bool, all: bool) {
-
     if all {
-
         let (avg1, avg5, avg15) = cpu_load_avg();
 
         println!("CPU");
@@ -14,19 +12,14 @@ pub fn cpu(ghz: bool, all: bool) {
     }
 
     if ghz {
-
         println!("CPU");
         println!("Frequency:  {:.2} GHz", cpu_freq_ghz());
-
     } else {
-
         println!("CPU");
         println!("Usage:  {:.2}%", cpu_usage());
         println!("Frequency:  {:.2} GHz", cpu_freq_ghz());
-
     }
 }
-
 
 fn read_cpu_times() -> Vec<u64> {
     let content = fs::read_to_string("/proc/stat").unwrap();
@@ -56,13 +49,9 @@ fn cpu_usage() -> f64 {
     100.0 * (1.0 - idle_delta as f64 / total_delta as f64)
 }
 
-
 /// Processor frequency
 fn cpu_freq_ghz() -> f64 {
-    let freq = fs::read_to_string(
-        "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq"
-    )
-    .unwrap();
+    let freq = fs::read_to_string("/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq").unwrap();
 
     let khz: f64 = freq.trim().parse().unwrap();
 
@@ -70,12 +59,11 @@ fn cpu_freq_ghz() -> f64 {
 }
 
 fn cpu_load_avg() -> (f64, f64, f64) {
-
     let content = fs::read_to_string("/proc/loadavg").unwrap();
     let mut values = content.split_whitespace();
 
-    let avg1  = values.next().unwrap().parse::<f64>().unwrap();
-    let avg5  = values.next().unwrap().parse::<f64>().unwrap();
+    let avg1 = values.next().unwrap().parse::<f64>().unwrap();
+    let avg5 = values.next().unwrap().parse::<f64>().unwrap();
     let avg15 = values.next().unwrap().parse::<f64>().unwrap();
 
     (avg1, avg5, avg15)
