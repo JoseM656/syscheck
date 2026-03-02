@@ -11,6 +11,7 @@ fn main() {
 
     match cli {
         Ok(cli) => match cli.command {
+            
             Commands::Cpu { ghz, all } => {
                 metrics::cpu::cpu(ghz, all);
             }
@@ -18,8 +19,6 @@ fn main() {
             Commands::Mem { cache, swap, all } => metrics::mem::mem(cache, swap, all),
 
             Commands::Temp { all } => metrics::temp::temp(all),
-
-            Commands::Devices => utils::devices::devices(),
 
             Commands::Convert { value, from, to } => {
                 utils::convert::convert(value, from, to);

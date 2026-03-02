@@ -1,8 +1,8 @@
 # Welcome
 
 
-syscheck is a lightweight binary rust for linux than give you varius tool, like monitor tools and other utilities like copy paths and files. 
-The project uses clap to join the varius tools.
+syscheck is a lightweight binary rust for linux than give you varius tool, like monitor tools and other utilities like convert numbers
+or check system information. The project uses clap to join the varius tools.
 
 ![screenshot](screenshots/screenshot_1.png)
 
@@ -71,9 +71,6 @@ hex -> bin
 - temp: It displays the processor or motherboard temperature.
 
 - info: Displays general system information.
-
-- devices: Displays the devices connected to the dbus.
-
 
 ## Advantages
 

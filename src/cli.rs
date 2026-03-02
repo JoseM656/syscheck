@@ -51,9 +51,6 @@ pub enum Commands {
 
     },
 
-    /// Show devices connected in the system bus.
-    Devices,
-
     /// Convert numbers between binary, hexadecimal, octal or decimal.
     Convert {
     
