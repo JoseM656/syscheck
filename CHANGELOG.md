@@ -23,4 +23,4 @@
 
 ### 0.4.0
 
-- 
+- A frist version of info.rs has been deploy, but still not finished. 
